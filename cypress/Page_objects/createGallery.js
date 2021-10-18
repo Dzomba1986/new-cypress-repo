@@ -36,7 +36,7 @@ export default class CreateGalleryPage{
     }
 
     get addImageButton(){
-        return cy.get('form > :nth-child(3) > :nth-child(3)');
+        return cy.contains('Add image');
     }
 
     get createGallerySubmitButton(){

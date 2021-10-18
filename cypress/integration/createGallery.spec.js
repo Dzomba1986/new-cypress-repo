@@ -17,7 +17,7 @@ describe('create gallery page', () =>{
     let userData = {
         randomTitle: faker.name.title(),
         randomDescription: faker.lorem.word(),
-        randomImage: faker.image.animals()
+        randomImage: faker.image.animals()+'.jpg'
         }
 
      before('log into the app', () =>{
@@ -99,13 +99,13 @@ describe('create gallery page', () =>{
 
         cy.visit('/');
         allGalleriesPage.mainTitleField.should('have.text', 'All Galleries');
-    });
+    })
 
-    it.only('test delete gallery via BE', () => {
+    it('test delete gallery via BE', () => {
         cy.loginViaBackend("abcd@abcd.com", "12341234");
         cy.readFile('./galleryId.json').then((file) => {
             let galleryId = file;
             cy.deleteGalleryViaBackend(galleryId);
-        });
+        })
     })
 });
